@@ -1,0 +1,129 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(50deg, green, black, black, black, blue);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.app-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 50px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+#answers-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.answer-btn {
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 48%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.answer-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-3px);
+}
+
+.image-option {
+    height: 140px;
+    display: flex;
+    padding: 8px;
+}
+
+.image-option img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.correct { background-color: #28a745 !important; }
+.wrong { background-color: #dc3545 !important; }
+
+#start-btn, #restart-btn {
+    background: #ff4081;
+    padding: 15px 40px;
+    border-radius: 50px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.hide { display: none; }
+
+#stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Щоб не заважали клікам */
+    z-index: -1; /* На задній план */
+    overflow: hidden;
+    background:linear-gradient(50deg, green, black, black, black, blue) ; /* Темний фон для космосу, якщо body інший */
+}
+
+/* Стиль однієї зірки */
+.star {
+    position: absolute;
+    bottom: -50px; /* Починають за нижньою межею екрана */
+    color: #fff; /* Білий колір */
+    font-size: 20px;
+    user-select: none;
+    opacity: 0; /* Спочатку невидимі */
+    /* Тінь, щоб зірки світилися */
+    text-shadow: 0 0 5px #fff, 0 0 10px #4cc9f0, 0 0 15px #4cc9f0;
+    animation: flyUp linear forwards;
+}
+
+/* Анімація польоту знизу вгору */
+@keyframes flyUp {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1; /* Швидко стають видимими */
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        /* В кінці пролітають всю висоту екрана (-110vh) */
+        transform: translateY(-110vh) scale(1.2);
+        opacity: 0; /* Зникають вгорі */
+    }
+}
